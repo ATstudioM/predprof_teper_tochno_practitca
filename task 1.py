@@ -7,6 +7,7 @@
 
 from csv import reader, writer
 
+# Читаем файл
 table = open('students.csv', 'r')
 data = reader(table)
 data = list(data)
@@ -14,19 +15,28 @@ table.close()
 
 score = 0
 counter = 0
-for i in range(len(data)):
+empty_marks = dict()
+
+# Находим оценку для Хадарова Владимира, а заодно ищем всех учеников без оценок. Их классы мы записываем в
+# Словарь empty_marks
+for i in range(1, len(data)):
     if 'Хадаров Владимир' in data[i][1]:
         print(f'Ты получил: {data[i][-1]} за проект - {data[i][0]}')
-    if data[i][-1].isdigit():
-        score += int(data[i][-1])
-        counter += 1
+    if not data[i][-1].isdigit():
+        empty_marks[data[i][3]] = [0, 0]
 
-score = round(score / counter, 3)
+# Добавляем в словарь оценки одноклассников
+for i in range(1, len(data)):
+    if data[i][3] in empty_marks and data[i][-1].isdigit():
+        empty_marks[data[i][3]][0] += int(data[i][-1])
+        empty_marks[data[i][3]][1] += 1
 
-for i in range(len(data)):
-    if data[i][-1] == 'None':
-        data[i][-1] = str(score)
+# Замена всех None на среднее значение по классу
+for i in range(1, len(data)):
+    if not data[i][-1].isdigit():
+        data[i][-1] = str(round(empty_marks[data[i][3]][0] / empty_marks[data[i][3]][1], 3))
 
+# Запись в новую таблицу
 table = open('students_new.csv', 'w')
 writing = writer(table, delimiter=',', quotechar=';')
 writing.writerows(data)
