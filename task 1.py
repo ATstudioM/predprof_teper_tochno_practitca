@@ -15,7 +15,7 @@ table.close()
 score = 0
 counter = 0
 for i in range(len(data)):
-    if 'Матыгуллин Адель' in data[i][1]:
+    if 'Хадаров Владимир' in data[i][1]:
         print(f'Ты получил: {data[i][-1]} за проект - {data[i][0]}')
     if data[i][-1].isdigit():
         score += int(data[i][-1])
