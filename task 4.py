@@ -26,7 +26,6 @@ def generate_password(lenght):
 
 
 def generate_login(name):
-    print(name)
     if len(name) >= 3:
         login = name[0] + "_" + name[1][0] + name[2][0]
     else:
