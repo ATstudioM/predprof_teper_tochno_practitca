@@ -7,6 +7,13 @@ from csv import writer
 
 
 def generate_password(lenght):
+    """
+    Генерация пароля для каждого учащегося
+    :param lenght:
+    Количество символов в пароле
+    :return:
+    Пароль, согласно условию, данному в задаче
+    """
     letters = "qwertyuiopasdfghjklzxcvbnm"
     numbers = '0123456789'
     password = []
@@ -26,6 +33,13 @@ def generate_password(lenght):
 
 
 def generate_login(name):
+    """
+    Генерация логина для каждого из учащихся
+    :param name:
+    ФИО учащихся
+    :return:
+    Логин, согласно условию задачи
+    """
     if len(name) >= 3:
         login = name[0] + "_" + name[1][0] + name[2][0]
     else:
@@ -44,10 +58,12 @@ for i in range(0, len(students_data)):
     students_data[i][-1] = students_data[i][-1][:1]
 
 
+# Добавляем столбцы с логином и паролем в таблицу
 students_data[0].append('login')
 students_data[0].append('password')
 
 
+# Добавляем логин и пароль каждого учащегося в таблицу
 for i in range(1, len(students_data)):
     students_data[i].append(generate_login(students_data[i][1]))
     students_data[i].append(generate_password(8))
