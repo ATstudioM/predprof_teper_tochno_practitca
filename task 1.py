@@ -8,7 +8,7 @@
 from csv import reader, writer
 
 # Читаем файл
-table = open('students.csv', 'r')
+table = open('students.csv', 'r', encoding='utf-8')
 data = reader(table)
 data = list(data)
 table.close()
@@ -37,7 +37,7 @@ for i in range(1, len(data)):
         data[i][-1] = str(round(empty_marks[data[i][3]][0] / empty_marks[data[i][3]][1], 3))
 
 # Запись в новую таблицу
-table = open('students_new.csv', 'w')
+table = open('students_new.csv', 'w', encoding='utf-8')
 writing = writer(table, delimiter=',', quotechar=';')
 writing.writerows(data)
 table.close()

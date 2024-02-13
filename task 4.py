@@ -48,7 +48,7 @@ def generate_login(name):
 
 
 # Считываем данные из таблицы и записываем в список
-file = open('students.csv')
+file = open('students.csv', encoding='utf-8')
 students_data = list(file)
 file.close()
 

@@ -4,13 +4,14 @@
  """
 
 # Считываем данные из таблицы и записываем в список
-file = open('students.csv')
+file = open('students.csv', encoding='utf-8')
 students_data = list(file)
 file.close()
 
 # Находим всех учеников из 10 класса, с которых нужно будет потом сортировать
 # Их мы записываем в новый список
-students_from_ten_grade = []
+students_from_ten_grade = dict()
+
 for i in students_data:
     i = i.split(',')
     i[-1] = i[-1][:-1]
