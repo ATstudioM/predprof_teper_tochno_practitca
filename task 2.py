@@ -10,7 +10,7 @@ file.close()
 
 # Находим всех учеников из 10 класса, с которых нужно будет потом сортировать
 # Их мы записываем в новый список
-students_from_ten_grade = dict()
+students_from_ten_grade = list()
 
 for i in students_data:
     i = i.split(',')

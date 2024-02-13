@@ -36,7 +36,7 @@ for i in range(1, len(students_data)):
     students_data[i][0] = genereate_hash(students_data[i][1])
 
 # Записываем всё в новую таблицу
-table = open('students_with_hash.csv', 'w')
+table = open('students_with_hash.csv', 'w', encoding='utf-8')
 writing = writer(table, delimiter=',', quotechar=';')
 writing.writerows(students_data)
 table.close()

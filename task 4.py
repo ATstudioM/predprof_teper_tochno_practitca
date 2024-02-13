@@ -69,7 +69,7 @@ for i in range(1, len(students_data)):
     students_data[i].append(generate_password(8))
 
 # Запись в новую таблицу
-table = open('students_with_password.csv', 'w')
+table = open('students_with_password.csv', 'w', encoding='utf-8')
 writing = writer(table, delimiter=',', quotechar=';')
 writing.writerows(students_data)
 table.close()
