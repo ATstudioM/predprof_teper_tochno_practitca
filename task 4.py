@@ -40,6 +40,7 @@ def generate_login(name):
     :return:
     Логин, согласно условию задачи
     """
+    name = name.split()
     if len(name) >= 3:
         login = name[0] + "_" + name[1][0] + name[2][0]
     else:
